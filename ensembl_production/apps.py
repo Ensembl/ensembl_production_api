@@ -17,6 +17,11 @@ from django.conf import settings
 from django.db.models.signals import class_prepared
 from django.utils.translation import gettext_lazy as _
 
+from suit.apps import DjangoSuitConfig
+
+class SuitConfig(DjangoSuitConfig):
+    layout = 'horizontal'
+
 
 def override_logentry(sender, **kwargs):
     from ensembl_production.models import SpanningForeignKey

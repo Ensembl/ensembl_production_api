@@ -67,7 +67,8 @@ CORS_ALLOWED_ORIGINS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'jet',
+    # 'jet',
+    'jazzmin',
     'ensembl_production.apps.EnsemblProductionConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -90,6 +91,7 @@ INSTALLED_APPS = [
     'sitetree',
     'corsheaders',
 ]
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -264,3 +266,27 @@ LOGOUT_REDIRECT_URL = "/"
 
 ## Set to have request.get_host() give precedence to X-Forwarded-Host over Host
 # USE_X_FORWARDED_HOST = True
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "darkly",
+    "dark_mode_theme": "cyborg",
+}
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Ensembl Production Services",
+    "site_header": "Ensembl Production Services",
+    "site_logo": "/img/ensembl-android-chrome-192.png",
+    "welcome_sign": "Welcome to Ensembl Production Services",
+    # Links to put along the top menu
+    "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+
+        # model admin to link to (Permissions checked against model)
+        {"model": "auth.User"},
+
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"app": "ensembl_production"},
+    ]
+}

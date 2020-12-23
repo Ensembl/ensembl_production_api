@@ -204,13 +204,12 @@
         {% endif %}
     </div>
     {% else %}
-        {% load crispy_forms_tags %}
         <div class="container-fluid">
             <h1>Adding form</h1>
 
             <div class="p-3 my-3 border">
                 {% block submit %}
-                    {% crispy adminform.form adminform.form.helper %}
+                    {% form %}
                 {% endblock submit %}
             </div>
         </div>

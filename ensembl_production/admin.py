@@ -15,6 +15,7 @@
 import jsonfield
 from django import forms
 from django.contrib import admin
+from django.contrib.admin import AdminSite
 from django.contrib.auth.admin import UserAdmin
 # Unregister the provided model admin
 from django.contrib.auth.models import User
@@ -24,6 +25,8 @@ from fernet_fields import EncryptedCharField
 
 from .models import ProductionFlaskApp, Credentials
 
+
+admin.site.unregister(User)
 
 
 
@@ -77,7 +80,7 @@ class FlaskAppAdmin(ProductionUserAdminMixin, SuperUserAdmin):
 
     formfield_overrides = {
         jsonfield.JSONField: {'widget': jsonfield.fields.JSONWidget(attrs={'rows': 20, 'cols': 70,
-                                                                            'class': 'vLargeTextField'})},
+                                                                           'class': 'vLargeTextField'})},
     }
 
     def app_theme_color(self, obj):
@@ -104,7 +107,6 @@ class CredentialsAdmin(admin.ModelAdmin, SuperUserAdmin):
     }
 
 
-admin.site.unregister(User)
 
 
 @admin.register(User)

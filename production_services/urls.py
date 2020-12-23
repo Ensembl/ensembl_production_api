@@ -26,11 +26,12 @@ from django.views.generic import TemplateView, RedirectView
 
 import ensembl_production.views as views
 
+
 urlpatterns = [
     path('',
          TemplateView.as_view(template_name='home.html', extra_context={'current_date': datetime.now()}),
          name='home'),
-    path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    # path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('admin/', admin.site.urls),
     url('bugs/', RedirectView.as_view(url='/admin/ensembl_intentions/knownbug')),
     path('dbcopy/', include('ensembl_dbcopy.urls')),
@@ -58,6 +59,4 @@ handler404 = 'ensembl_production.views.handler404'
 handler500 = 'ensembl_production.views.handler500'
 handler403 = 'ensembl_production.views.handler403'
 
-admin.site.site_header = "Ensembl Production Services"
-admin.site.site_title = "Ensembl Production Services"
-admin.site.index_title = "Welcome to Ensembl Production Services"
+
